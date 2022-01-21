@@ -1,16 +1,5 @@
 
-export type PostType = {
-    getId() : number;
-    setId() : void;
-    getUserId() : number;
-    setUserId() : void;
-    getTitle() : string;
-    setTitle() : string;
-    getBody() : string;
-    setBody() : void;
-}
-
-export class Post<PostType> {
+export class Post {
     private id : number|undefined;
     private userId : number|undefined;
     private title : string|undefined;

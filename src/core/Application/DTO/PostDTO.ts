@@ -6,14 +6,14 @@ export class PostDTO {
     public title : string;
     public body : string;
 
-    constructor(post : Post<number>) {
+    constructor(post : Post) {
         this.id = post.getId();
         this.userId = post.getUserId();
         this.title = post.getTitle();
         this.body = post.getBody();
     }
 
-    static fromArray(collection : Post<number>[]) : PostDTO[]
+    static fromArray(collection : Post[]) : PostDTO[]
     {
         return collection.map((post) => {
             return new PostDTO(post);

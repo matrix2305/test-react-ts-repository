@@ -1,12 +1,12 @@
 import React from "react";
-import {PostDTO} from "../../core/Application/DTO/PostDTO";
+import {PostModel} from "../Models/PostModel";
 
 type props = {
-  posts: PostDTO[]
+  posts: PostModel[]|null
 }
 
 export default function PostsView({posts} : props) {
-  console.log(posts);
+  console.log('Put posts on the view: ', posts);
   return(
     <></>
   )

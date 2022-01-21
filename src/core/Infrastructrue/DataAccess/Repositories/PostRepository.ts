@@ -1,5 +1,5 @@
 import {BaseRepository} from "./BaseRepository";
-import {Post, PostType} from "../../../Domain/Entities/Post";
+import {Post} from "../../../Domain/Entities/Post";
 import {PostRepositoryInterface} from "../../../Application/Contracts/Repositories/PostRepositoryInterface";
 
 type PostAPI = {
@@ -11,7 +11,7 @@ type PostAPI = {
 
 export default class PostRepository extends BaseRepository implements PostRepositoryInterface{
 
-    public async getPosts(): Promise<Post<number>[]>
+    public async getPosts(): Promise<Post[]>
     {
         return this.axios.get('https://gorest.co.in/public/v1/posts').then(response => {
             return response.data.data.map((post: PostAPI) => {

@@ -1,5 +1,5 @@
 import {PostDTO} from "../../DTO/PostDTO";
 
 export interface GetPostsUseCaseInterface {
-    execute() : PostDTO[]|Promise<PostDTO[]>;
+    execute() : Promise<PostDTO[]>;
 }
