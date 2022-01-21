@@ -9,15 +9,15 @@ export default function ViewPostsController() {
     const [data, setData] = useState<PostModel[]|null>(null);
 
     useEffect(() => {
-        getAllPosts().then(result => {
-            setData(PostModel.listModel(result));
-        }).catch(err => {
-            console.log(err)
-        })
+        getAllPosts()
     }, []);
 
-    const getAllPosts = async () => {
-        return getPostsUseCase.execute();
+    const getAllPosts = () => {
+        getPostsUseCase.execute().then(result => setData(PostModel.listModel(result)))
+    };
+
+    const createPost = () => {
+
     }
 
     return (<PostsView posts={data}/>);
