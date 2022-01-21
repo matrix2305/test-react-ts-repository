@@ -11,12 +11,10 @@ type PostAPI = {
 
 export default class PostRepository extends BaseRepository implements PostRepositoryInterface{
 
-    // @ts-ignore
-    public async getPosts(): Promise<>
+    public async getPosts(): Promise<Post<number>[]>
     {
-        try {
-            let result: {data: PostAPI[]} = await this.axios.get('https://gorest.co.in/public/v1/posts');
-            return result.data.map((post: PostAPI) => {
+        return this.axios.get('https://gorest.co.in/public/v1/posts').then(response => {
+            return response.data.data.map((post: PostAPI) => {
                 let postEntity = new Post();
                 postEntity.setId(post.id);
                 postEntity.setTitle(post.title);
@@ -24,8 +22,6 @@ export default class PostRepository extends BaseRepository implements PostReposi
                 postEntity.setUserId(post.user_id);
                 return postEntity;
             })
-        } catch (e) {
-            console.log(e);
-        }
+        })
     }
 }

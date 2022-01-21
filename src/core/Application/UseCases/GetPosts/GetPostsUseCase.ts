@@ -10,13 +10,10 @@ export class GetPostsUseCase implements GetPostsUseCaseInterface{
         this.postRepository = new PostRepository();
     }
 
-    // @ts-ignore
-    public execute() : PostDTO[]
+
+    public async execute() : Promise<PostDTO[]>
     {
-        try {
-            return PostDTO.fromArray(this.postRepository.getPosts());
-        }catch (e){
-            console.log(e);
-        }
+        let data = await this.postRepository.getPosts();
+        return PostDTO.fromArray(data);
     }
 }
